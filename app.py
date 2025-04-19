@@ -12,13 +12,13 @@ app = Flask(__name__)
 model_path = 'best_model.h5'
 # Function to download the model from GitHub Releases
 def download_model():
-    if not os.path.exists(MODEL_PATH):
+    if not os.path.exists(model_path):
         # Replace with your GitHub Releases asset URL
         model_url = 'https://github.com/let-you-rise/brain-scan/releases/download/v1.0.0/best_model.h5'
         print("Downloading model...")
         response = requests.get(model_url, stream=True)
         if response.status_code == 200:
-            with open(MODEL_PATH, 'wb') as f:
+            with open(model_path, 'wb') as f:
                 for chunk in response.iter_content(chunk_size=8192):
                     f.write(chunk)
             print("Model downloaded successfully!")
