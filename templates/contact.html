@@ -1,0 +1,247 @@
+{% extends 'layout.html' %}
+
+{% block title %}Contact Us{% endblock %}
+
+{% block additional_styles %}
+.contact-form {
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 30px;
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.contact-info-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.contact-icon {
+    font-size: 2rem;
+    color: var(--primary-color);
+    margin-bottom: 15px;
+}
+
+.contact-item {
+    margin-bottom: 20px;
+}
+
+.contact-label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-value {
+    color: var(--secondary-color);
+}
+
+.social-contact {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-contact a {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+.social-contact a:hover {
+    transform: translateY(-5px);
+    background-color: var(--accent-color);
+}
+
+.faq-item {
+    margin-bottom: 20px;
+}
+
+.faq-question {
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.faq-answer {
+    color: var(--secondary-color);
+}
+
+.form-button {
+    background-color: var(--primary-color);
+    border: none;
+    padding: 10px 30px;
+    border-radius: 30px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.form-button:hover {
+    background-color: var(--accent-color);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Contact Us</h1>
+        <p>Get in touch with our team for questions, feedback, or collaboration opportunities</p>
+    </div>
+</section>
+
+<div class="container">
+    <div class="row">
+        <!-- Contact Form -->
+        <div class="col-lg-7 mb-4">
+            <h2 class="section-title">Send Us a Message</h2>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Your Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name">
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email">
+                    </div>
+                    <div class="mb-3">
+                        <label for="subject" class="form-label">Subject</label>
+                        <select class="form-select" id="subject">
+                            <option selected>Select a subject</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="support">Technical Support</option>
+                            <option value="feedback">Feedback</option>
+                            <option value="business">Business Opportunity</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea class="form-control" id="message" rows="5" placeholder="Your message"></textarea>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" id="privacyCheck">
+                        <label class="form-check-label" for="privacyCheck">
+                            I agree to the <a href="#">privacy policy</a> and consent to being contacted regarding my inquiry.
+                        </label>
+                    </div>
+                    <button type="submit" class="btn form-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="col-lg-5">
+            <h2 class="section-title">Contact Information</h2>
+            <div class="contact-info-card">
+                <div class="contact-item">
+                    <i class="bi bi-geo-alt contact-icon"></i>
+                    <span class="contact-label">Address</span>
+                    <p class="contact-value">123 Innovation Way<br>Medical District<br>Boston, MA 02115</p>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-envelope contact-icon"></i>
+                    <span class="contact-label">Email</span>
+                    <p class="contact-value">info@cardioscan.ai</p>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-telephone contact-icon"></i>
+                    <span class="contact-label">Phone</span>
+                    <p class="contact-value">+1 (617) 555-0123</p>
+                </div>
+                <div class="contact-item">
+                    <i class="bi bi-clock contact-icon"></i>
+                    <span class="contact-label">Hours</span>
+                    <p class="contact-value">Monday - Friday: 9am - 5pm EST<br>Saturday & Sunday: Closed</p>
+                </div>
+                <div class="social-contact">
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <section class="mb-5 mt-5">
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="faq-item">
+                    <p class="faq-question">Is CardioScan AI a replacement for medical diagnosis?</p>
+                    <p class="faq-answer">No, CardioScan AI is designed as a preliminary screening tool to help identify potential risks. It should not replace professional medical evaluation. Always consult with healthcare professionals for proper diagnosis and treatment.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">How accurate is the heart disease prediction?</p>
+                    <p class="faq-answer">Our model achieves approximately 98% accuracy in controlled testing environments. However, accuracy may vary based on image quality and individual factors. Results should be considered indicative rather than definitive.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Is my medical data stored or shared?</p>
+                    <p class="faq-answer">We prioritize your privacy. Uploaded images are processed securely and are not stored on our servers after analysis is complete. We do not share any personal medical information with third parties.</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="faq-item">
+                    <p class="faq-question">What types of images work best with CardioScan AI?</p>
+                    <p class="faq-answer">CardioScan AI is optimized for cardiac MRI images in JPG format. For best results, use high-resolution images taken by professional medical equipment.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">How can healthcare providers integrate with CardioScan AI?</p>
+                    <p class="faq-answer">We offer API integration options for healthcare providers. Please contact our business development team at partners@cardioscan.ai for more information about partnerships and integration.</p>
+                </div>
+                <div class="faq-item">
+                    <p class="faq-question">Is CardioScan AI available worldwide?</p>
+                    <p class="faq-answer">Yes, our web platform is accessible globally. However, regulatory approval may vary by country. Please check local regulations regarding the use of AI-assisted medical tools in your region.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Simple form validation
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+        const privacyCheck = document.getElementById('privacyCheck').checked;
+        
+        if (!name || !email || !message) {
+            alert('Please fill in all required fields');
+            return;
+        }
+        
+        if (!privacyCheck) {
+            alert('Please agree to the privacy policy');
+            return;
+        }
+        
+        // In a real application, you would send this data to your server
+        // For this demo, we'll just show a success message
+        alert('Thank you for your message! We will get back to you soon.');
+        this.reset();
+    });
+</script>
+{% endblock %} 

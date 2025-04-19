@@ -1,0 +1,324 @@
+{% extends 'layout.html' %}
+
+{% block title %}Prediction{% endblock %}
+
+{% block additional_styles %}
+.upload-area {
+    border: 2px dashed var(--primary-color);
+    border-radius: 10px;
+    padding: 40px;
+    text-align: center;
+    background-color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.upload-area:hover {
+    border-color: #0056b3;
+    background-color: #f8f9fa;
+    transform: translateY(-3px);
+}
+
+.result-card {
+    display: none;
+    margin: 40px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.card-header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 20px;
+    font-weight: bold;
+}
+
+.risk-level {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 20px 0;
+    padding: 15px;
+    text-align: center;
+    border-radius: 8px;
+}
+
+.health-tips {
+    background-color: #f8f9fa;
+    padding: 25px;
+    border-radius: 10px;
+    margin-top: 25px;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.05);
+}
+
+.health-tips h4 {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.loading {
+    display: none;
+    text-align: center;
+    margin: 30px 0;
+}
+
+.demo-mode {
+    background-color: #fff3cd;
+    color: #856404;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 20px 0;
+    border-left: 5px solid #ffc107;
+    display: none;
+}
+
+.preview-container {
+    text-align: center;
+    margin: 30px 0;
+    display: none;
+}
+
+.preview-image {
+    max-width: 300px;
+    max-height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.steps-container {
+    margin-bottom: 30px;
+}
+
+.step {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.step-number {
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.step-content {
+    flex-grow: 1;
+}
+
+.step-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Heart Disease Prediction</h1>
+        <p>Upload your cardiac MRI image and get an instant assessment with personalized health recommendations</p>
+    </div>
+</section>
+
+<div class="container">
+    <section class="mb-5">
+        <h2 class="section-title">How It Works</h2>
+        <div class="steps-container">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3 class="step-title">Upload Your Image</h3>
+                    <p>Upload a cardiac MRI image in JPG format. All uploads are processed securely.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3 class="step-title">AI Analysis</h3>
+                    <p>Our advanced AI model analyzes your image to identify patterns associated with heart disease.</p>
+                </div>
+            </div>
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3 class="step-title">Get Your Results</h3>
+                    <p>Receive a risk assessment and personalized health recommendations within seconds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <h2 class="section-title">Upload Your Cardiac Image</h2>
+        
+        <div class="upload-area" id="uploadArea">
+            <i class="bi bi-cloud-upload text-primary" style="font-size: 3rem;"></i>
+            <h3 class="mt-3">Upload Medical Image</h3>
+            <p class="text-muted">Click here or drag and drop your JPG image</p>
+            <p class="small text-muted">(Only JPG/JPEG format is supported)</p>
+            <input type="file" id="fileInput" accept=".jpg,.jpeg" style="display: none;">
+        </div>
+
+        <div class="preview-container" id="previewContainer">
+            <h4 class="section-title">Image Preview</h4>
+            <img id="previewImage" class="preview-image" src="" alt="Preview">
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-3">Analyzing your cardiac image...</p>
+        </div>
+
+        <div class="demo-mode" id="demoMode">
+            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+            <strong>Note:</strong> Running in demo mode. Results are simulated and not from actual model analysis. For educational purposes only.
+        </div>
+
+        <div class="result-card card" id="resultCard">
+            <div class="card-header">
+                <h3 class="mb-0"><i class="bi bi-clipboard2-pulse me-2"></i>Analysis Results</h3>
+            </div>
+            <div class="card-body">
+                <div class="risk-level" id="riskLevel"></div>
+                <div class="progress mb-4" style="height: 20px;">
+                    <div class="progress-bar" id="riskBar" role="progressbar" style="width: 0%"></div>
+                </div>
+                <div class="health-tips">
+                    <h4><i class="bi bi-lightbulb me-2"></i>Personalized Health Tips</h4>
+                    <ul id="healthTips" class="list-group list-group-flush"></ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const uploadArea = document.getElementById('uploadArea');
+    const fileInput = document.getElementById('fileInput');
+    const loading = document.getElementById('loading');
+    const resultCard = document.getElementById('resultCard');
+    const riskLevel = document.getElementById('riskLevel');
+    const riskBar = document.getElementById('riskBar');
+    const healthTips = document.getElementById('healthTips');
+    const demoMode = document.getElementById('demoMode');
+    const previewContainer = document.getElementById('previewContainer');
+    const previewImage = document.getElementById('previewImage');
+
+    uploadArea.addEventListener('click', () => fileInput.click());
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#0056b3';
+    });
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.style.borderColor = '#007bff';
+    });
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.style.borderColor = '#007bff';
+        const file = e.dataTransfer.files[0];
+        if (file) handleFile(file);
+    });
+
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) handleFile(file);
+    });
+
+    function handleFile(file) {
+        if (!file.type.match('image/jpeg')) {
+            alert('Please upload a JPG image');
+            return;
+        }
+
+        // Show image preview
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            previewImage.src = e.target.result;
+            previewContainer.style.display = 'block';
+            
+            // Scroll to the preview
+            previewContainer.scrollIntoView({ behavior: 'smooth' });
+        }
+        reader.readAsDataURL(file);
+
+        const formData = new FormData();
+        formData.append('file', file);
+
+        loading.style.display = 'block';
+        resultCard.style.display = 'none';
+        demoMode.style.display = 'none';
+
+        fetch('/predict', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            loading.style.display = 'none';
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+
+            // Show demo mode warning if not using the real model
+            if (!data.using_model) {
+                demoMode.style.display = 'block';
+            }
+
+            const riskScore = data.risk_score * 100;
+            riskBar.style.width = `${riskScore}%`;
+            riskBar.style.backgroundColor = getRiskColor(data.risk_level);
+            
+            riskLevel.textContent = `Risk Level: ${data.risk_level.toUpperCase()} (${riskScore.toFixed(1)}%)`;
+            riskLevel.style.color = getRiskColor(data.risk_level);
+            riskLevel.style.backgroundColor = getLightRiskColor(data.risk_level);
+
+            healthTips.innerHTML = data.health_tips
+                .map(tip => `<li class="list-group-item"><i class="bi bi-check-circle-fill text-success me-2"></i>${tip}</li>`)
+                .join('');
+
+            resultCard.style.display = 'block';
+            
+            // Scroll to the results
+            resultCard.scrollIntoView({ behavior: 'smooth' });
+        })
+        .catch(error => {
+            loading.style.display = 'none';
+            alert('An error occurred while processing the image');
+            console.error(error);
+        });
+    }
+
+    function getRiskColor(riskLevel) {
+        const colors = {
+            'low': '#28a745',
+            'moderate': '#ffc107',
+            'high': '#dc3545'
+        };
+        return colors[riskLevel] || '#007bff';
+    }
+    
+    function getLightRiskColor(riskLevel) {
+        const colors = {
+            'low': '#d4edda',
+            'moderate': '#fff3cd',
+            'high': '#f8d7da'
+        };
+        return colors[riskLevel] || '#f8f9fa';
+    }
+</script>
+{% endblock %} 

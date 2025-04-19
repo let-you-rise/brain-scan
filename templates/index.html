@@ -1,0 +1,163 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block additional_styles %}
+.feature-icon {
+    font-size: 3rem;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+    transform: translateY(-10px);
+}
+
+.cta-section {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 60px 0;
+    text-align: center;
+    margin: 50px 0;
+    border-radius: 10px;
+}
+
+.cta-button {
+    background-color: white;
+    color: var(--primary-color);
+    font-weight: bold;
+    padding: 12px 30px;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+
+.cta-button:hover {
+    background-color: rgba(255,255,255,0.9);
+    transform: scale(1.05);
+}
+
+.testimonial-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.testimonial-quote {
+    font-style: italic;
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.testimonial-author {
+    font-weight: bold;
+    color: var(--primary-color);
+}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Advanced Heart Disease Prediction Using AI</h1>
+        <p>Upload your cardiac MRI image and get instant risk assessment with personalized health recommendations</p>
+        <a href="/prediction" class="btn btn-light btn-lg rounded-pill px-4">Try It Now</a>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Features Section -->
+    <section class="mb-5">
+        <h2 class="section-title">How CardioScan AI Helps You</h2>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <i class="bi bi-heart-pulse feature-icon"></i>
+                    <h3>Early Detection</h3>
+                    <p>Our AI model can detect subtle patterns in cardiac images that might indicate early signs of heart disease, allowing for timely intervention.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <i class="bi bi-lightning-charge feature-icon"></i>
+                    <h3>Instant Results</h3>
+                    <p>Get your heart health assessment in seconds. Our advanced algorithms process your cardiac images quickly and efficiently.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card h-100">
+                    <i class="bi bi-clipboard2-pulse feature-icon"></i>
+                    <h3>Personalized Tips</h3>
+                    <p>Receive customized health recommendations based on your risk assessment to improve your heart health and overall wellbeing.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="mb-5">
+        <div class="row">
+            <div class="col-md-3 text-center mb-4">
+                <h2 class="display-4 fw-bold text-primary">98%</h2>
+                <p>Accuracy Rate</p>
+            </div>
+            <div class="col-md-3 text-center mb-4">
+                <h2 class="display-4 fw-bold text-primary">50K+</h2>
+                <p>Images Analyzed</p>
+            </div>
+            <div class="col-md-3 text-center mb-4">
+                <h2 class="display-4 fw-bold text-primary">3K+</h2>
+                <p>Medical Professionals</p>
+            </div>
+            <div class="col-md-3 text-center mb-4">
+                <h2 class="display-4 fw-bold text-primary">10+</h2>
+                <p>Research Papers</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="mb-4">Ready to Check Your Heart Health?</h2>
+            <p class="mb-4">Upload your cardiac MRI image and get an instant assessment of your heart health status.</p>
+            <a href="/prediction" class="btn cta-button">Get Started Now</a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="mb-5">
+        <h2 class="section-title">What Our Users Say</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"CardioScan AI helped detect my heart condition early, allowing my doctor to start treatment before any serious complications developed."</p>
+                    <p class="testimonial-author">- John D., 58</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"As a cardiologist, I recommend CardioScan AI to my patients. It provides a quick initial assessment that helps guide our more detailed examinations."</p>
+                    <p class="testimonial-author">- Dr. Sarah M., Cardiologist</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="testimonial-card">
+                    <p class="testimonial-quote">"The personalized health tips are incredibly valuable. They helped me make simple lifestyle changes that improved my heart health significantly."</p>
+                    <p class="testimonial-author">- Emily R., 45</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 

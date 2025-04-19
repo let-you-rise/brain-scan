@@ -1,0 +1,333 @@
+{% extends 'layout.html' %}
+
+{% block title %}Heart Health Information{% endblock %}
+
+{% block additional_styles %}
+.info-section {
+    margin-bottom: 40px;
+}
+
+.info-card {
+    height: 100%;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-bottom: 20px;
+}
+
+.stat-number {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.alert-type {
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-left: 5px solid #ffc107;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-left: 5px solid #dc3545;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-left: 5px solid #17a2b8;
+}
+
+.resource-link {
+    display: block;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+    text-decoration: none;
+    color: var(--dark-color);
+    transition: transform 0.3s ease;
+}
+
+.resource-link:hover {
+    transform: translateX(10px);
+    color: var(--primary-color);
+}
+
+.resource-icon {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>Heart Disease Information</h1>
+        <p>Learn about heart disease, its warning signs, risk factors, and prevention strategies</p>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Statistics Section -->
+    <section class="info-section">
+        <h2 class="section-title">Heart Disease Statistics</h2>
+        <div class="row">
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">17.9M</div>
+                    <p>Deaths worldwide each year due to cardiovascular diseases</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">80%</div>
+                    <p>Of heart disease cases are preventable through lifestyle changes</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">1 in 4</div>
+                    <p>Deaths in the United States are due to heart disease</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="stat-card">
+                    <div class="stat-number">47%</div>
+                    <p>Reduction in heart disease deaths since 1999 with modern treatments</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Warning Signs Section -->
+    <section class="info-section">
+        <h2 class="section-title">Warning Signs</h2>
+        <div class="alert-type alert-danger">
+            <h4><i class="bi bi-exclamation-triangle-fill me-2"></i>Seek immediate medical attention if you experience any of these symptoms:</h4>
+        </div>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-heart"></i> Chest Discomfort
+                    </div>
+                    <div class="info-card-body">
+                        <p>Most heart attacks involve discomfort in the center of the chest that lasts more than a few minutes, or that goes away and comes back. It can feel like uncomfortable pressure, squeezing, fullness or pain.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-lungs"></i> Shortness of Breath
+                    </div>
+                    <div class="info-card-body">
+                        <p>Often occurs with or before chest discomfort. It may be your only symptom. You may experience it while resting or during minimal physical activity.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-activity"></i> Irregular Heartbeat
+                    </div>
+                    <div class="info-card-body">
+                        <p>Heart palpitations or arrhythmias can feel like your heart is racing, pounding, fluttering, or skipping beats. Some arrhythmias can be life-threatening.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-droplet"></i> Cold Sweats
+                    </div>
+                    <div class="info-card-body">
+                        <p>Unexplained sweating or clammy skin may be a sign of a heart attack or heart failure, especially when combined with other heart attack symptoms.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-person-arms-up"></i> Fatigue
+                    </div>
+                    <div class="info-card-body">
+                        <p>Unusual or extreme tiredness that may last for days, especially in women. You may feel exhausted with routine activities like walking or shopping.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-water"></i> Swelling
+                    </div>
+                    <div class="info-card-body">
+                        <p>Swelling in the ankles, feet, legs, abdomen, or neck veins. This could be a sign that your heart isn't pumping blood effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Risk Factors Section -->
+    <section class="info-section">
+        <h2 class="section-title">Risk Factors</h2>
+        <div class="row">
+            <div class="col-md-6 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-person-gear"></i> Controllable Risk Factors
+                    </div>
+                    <div class="info-card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>High blood pressure</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>High cholesterol</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Smoking</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Diabetes</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Obesity</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Unhealthy diet</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Physical inactivity</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Excessive alcohol use</li>
+                            <li class="list-group-item"><i class="bi bi-check2-square me-2 text-success"></i>Stress</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-person-bounding-box"></i> Uncontrollable Risk Factors
+                    </div>
+                    <div class="info-card-body">
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item"><i class="bi bi-info-circle me-2 text-primary"></i>Age (Risk increases with age)</li>
+                            <li class="list-group-item"><i class="bi bi-info-circle me-2 text-primary"></i>Gender (Men have higher risk at younger age)</li>
+                            <li class="list-group-item"><i class="bi bi-info-circle me-2 text-primary"></i>Family history of heart disease</li>
+                            <li class="list-group-item"><i class="bi bi-info-circle me-2 text-primary"></i>Ethnicity (Higher risk in certain ethnic groups)</li>
+                            <li class="list-group-item"><i class="bi bi-info-circle me-2 text-primary"></i>Previous heart attack or stroke</li>
+                        </ul>
+                        <div class="alert-type alert-info mt-3">
+                            <p class="mb-0"><strong>Note:</strong> Even if you have uncontrollable risk factors, managing controllable factors can significantly reduce your overall risk.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prevention Section -->
+    <section class="info-section">
+        <h2 class="section-title">Prevention Strategies</h2>
+        <div class="row">
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-egg-fried"></i> Healthy Diet
+                    </div>
+                    <div class="info-card-body">
+                        <p>Focus on heart-healthy foods:</p>
+                        <ul>
+                            <li>Fruits and vegetables</li>
+                            <li>Whole grains</li>
+                            <li>Lean proteins</li>
+                            <li>Low-fat dairy products</li>
+                            <li>Healthy fats (olive oil, avocados, nuts)</li>
+                        </ul>
+                        <p>Limit intake of:</p>
+                        <ul>
+                            <li>Sodium (salt)</li>
+                            <li>Saturated and trans fats</li>
+                            <li>Added sugars</li>
+                            <li>Processed foods</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-bicycle"></i> Physical Activity
+                    </div>
+                    <div class="info-card-body">
+                        <p>Aim for at least 150 minutes of moderate-intensity exercise per week:</p>
+                        <ul>
+                            <li>Brisk walking</li>
+                            <li>Swimming</li>
+                            <li>Cycling</li>
+                            <li>Dancing</li>
+                        </ul>
+                        <p>Include strength training exercises 2-3 times per week.</p>
+                        <p>Even small amounts of activity are better than none. Start slowly and build up gradually.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-4">
+                <div class="info-card h-100">
+                    <div class="info-card-header">
+                        <i class="bi bi-clipboard2-pulse"></i> Regular Check-ups
+                    </div>
+                    <div class="info-card-body">
+                        <p>Schedule regular health screenings to monitor:</p>
+                        <ul>
+                            <li>Blood pressure</li>
+                            <li>Cholesterol levels</li>
+                            <li>Blood glucose</li>
+                            <li>Body weight</li>
+                        </ul>
+                        <p>Follow your doctor's recommendations for frequency of check-ups based on your personal risk factors.</p>
+                        <p>Don't skip appointments, even if you feel fine.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Additional Resources Section -->
+    <section class="info-section">
+        <h2 class="section-title">Additional Resources</h2>
+        <div class="row">
+            <div class="col-md-6">
+                <a href="https://www.heart.org/" target="_blank" class="resource-link">
+                    <i class="bi bi-globe resource-icon"></i> American Heart Association
+                </a>
+                <a href="https://www.cdc.gov/heartdisease/" target="_blank" class="resource-link">
+                    <i class="bi bi-globe resource-icon"></i> Centers for Disease Control and Prevention
+                </a>
+                <a href="https://www.nhlbi.nih.gov/" target="_blank" class="resource-link">
+                    <i class="bi bi-globe resource-icon"></i> National Heart, Lung, and Blood Institute
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://www.world-heart-federation.org/" target="_blank" class="resource-link">
+                    <i class="bi bi-globe resource-icon"></i> World Heart Federation
+                </a>
+                <a href="https://www.mayoclinic.org/diseases-conditions/heart-disease/" target="_blank" class="resource-link">
+                    <i class="bi bi-globe resource-icon"></i> Mayo Clinic - Heart Disease
+                </a>
+                <a href="https://www.bhf.org.uk/" target="_blank" class="resource-link">
+                    <i class="bi bi-globe resource-icon"></i> British Heart Foundation
+                </a>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 
