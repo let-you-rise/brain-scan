@@ -5,6 +5,7 @@ from PIL import Image
 import io
 import os
 import random  # Add for testing
+import requests
 
 app = Flask(__name__)
 
