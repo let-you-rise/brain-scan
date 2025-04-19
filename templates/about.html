@@ -1,0 +1,288 @@
+{% extends 'layout.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block additional_styles %}
+.about-section {
+    margin-bottom: 60px;
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.team-photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 5px solid white;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.team-name {
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--dark-color);
+}
+
+.team-role {
+    color: var(--primary-color);
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.team-bio {
+    font-size: 0.9rem;
+}
+
+.timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.timeline::after {
+    content: '';
+    position: absolute;
+    width: 4px;
+    background-color: var(--primary-color);
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -2px;
+}
+
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+
+.timeline-item:nth-child(odd) {
+    left: 0;
+    text-align: right;
+}
+
+.timeline-item:nth-child(even) {
+    left: 50%;
+}
+
+.timeline-content {
+    padding: 20px;
+    background-color: white;
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.timeline-item:nth-child(odd) .timeline-content {
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.timeline-item:nth-child(even) .timeline-content {
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.timeline-date {
+    color: white;
+    background-color: var(--primary-color);
+    display: inline-block;
+    padding: 5px 15px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    border: 4px solid var(--primary-color);
+    top: 15px;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+.timeline-item:nth-child(odd)::after {
+    right: -10px;
+}
+
+.timeline-item:nth-child(even)::after {
+    left: -10px;
+}
+
+.technology-icon {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.technology-card:hover .technology-icon {
+    transform: scale(1.2);
+}
+
+.technology-card {
+    text-align: center;
+    background-color: white;
+    padding: 30px 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    margin-bottom: 20px;
+}
+
+.technology-card:hover {
+    transform: translateY(-10px);
+}
+
+@media screen and (max-width: 768px) {
+    .timeline::after {
+        left: 20px;
+    }
+    
+    .timeline-item {
+        width: 100%;
+        padding-left: 50px;
+        padding-right: 15px;
+    }
+    
+    .timeline-item:nth-child(odd) {
+        left: 0;
+        text-align: left;
+    }
+    
+    .timeline-item:nth-child(even) {
+        left: 0;
+    }
+    
+    .timeline-item::after {
+        left: 10px;
+    }
+    
+    .timeline-item:nth-child(odd)::after {
+        right: auto;
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+        margin-right: 0;
+        margin-left: 20px;
+    }
+}
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section">
+    <div class="container">
+        <h1>About CardioScan AI</h1>
+        <p>Learn about our mission, technology, and the development journey behind our heart disease prediction platform</p>
+    </div>
+</section>
+
+<div class="container">
+    <!-- Mission Section -->
+    <section class="about-section">
+        <h2 class="section-title">Our Mission</h2>
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="info-card">
+                    <div class="info-card-body">
+                        <p>At CardioScan AI, our mission is to leverage artificial intelligence to democratize access to cardiac health assessments, enabling early detection of heart disease and ultimately saving lives.</p>
+                        <p>We believe that combining cutting-edge AI technology with medical imaging can create a powerful tool for both healthcare professionals and individuals concerned about their heart health.</p>
+                        <p>By providing an accessible platform for preliminary heart disease risk assessment, we aim to encourage more people to take proactive steps towards heart health and seek appropriate medical care when needed.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section class="about-section">
+        <h2 class="section-title">Our Technology</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="technology-card h-100">
+                    <i class="bi bi-brain technology-icon"></i>
+                    <h3>Deep Learning</h3>
+                    <p>Our AI model uses convolutional neural networks (CNNs) trained on thousands of cardiac MRI images to identify patterns associated with heart disease.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="technology-card h-100">
+                    <i class="bi bi-card-image technology-icon"></i>
+                    <h3>Image Processing</h3>
+                    <p>Advanced image preprocessing techniques ensure that uploaded cardiac images are properly analyzed regardless of source or format variations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="technology-card h-100">
+                    <i class="bi bi-shield-check technology-icon"></i>
+                    <h3>Secure Processing</h3>
+                    <p>We prioritize privacy with secure image processing that doesn't store your medical data, ensuring confidentiality and compliance with health data regulations.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-8 mx-auto">
+                <div class="alert-type alert-info">
+                    <p><strong>Note:</strong> CardioScan AI is designed as a preliminary screening tool and should not replace professional medical diagnosis. Always consult with healthcare professionals for proper medical evaluation.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Timeline -->
+    <section class="about-section">
+        <h2 class="section-title">Development Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 Q1</div>
+                    <h3>Research Phase</h3>
+                    <p>Began researching the application of deep learning to cardiac imaging and assembled our initial dataset of cardiac MRI images.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 Q2</div>
+                    <h3>Model Development</h3>
+                    <p>Developed and trained our first CNN model on 10,000+ cardiac images to identify patterns associated with heart disease.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 Q3</div>
+                    <h3>Algorithm Refinement</h3>
+                    <p>Refined our algorithms and improved accuracy through collaboration with cardiology experts and additional training data.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2025 Q4</div>
+                    <h3>Beta Testing</h3>
+                    <p>Launched beta testing with select healthcare partners to validate our technology in real-world environments.</p>
+                </div>
+            </div>
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">Present</div>
+                    <h3>Continuous Improvement</h3>
+                    <p>Ongoing research and development to improve accuracy, add new features, and expand our platform's capabilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %} 
